@@ -8,8 +8,6 @@ import java.util.Arrays;
 public class ThreadPoolScannerTest {
     public final String target = "localhost";
     
-    
-    
     @Test
     public void tcpScan() {
         AbstractPortScanner scanner = new TCPScanner(target);
@@ -22,7 +20,5 @@ public class ThreadPoolScannerTest {
         AbstractPortScanner scanner = new UDPScanner(target);
     
         System.out.println(Arrays.toString(scanner.scanPorts(0, 80)));
-        
-        
     }
 }
