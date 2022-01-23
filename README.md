@@ -1,4 +1,4 @@
-# SniperMapper
+# SniperMapper [![](https://jitpack.io/v/Sniper10754/SniperMapper.svg)](https://jitpack.io/#Sniper10754/SniperMapper)
 Simple port scanner API
 
 ### Example
