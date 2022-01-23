@@ -9,16 +9,33 @@ import java.util.Map;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
+/**
+ * The type Thread pool port scanner.
+ */
 public abstract class ThreadPoolPortScanner implements ThreadPoolScanner, PortScanner {
+    /**
+     * The Thread pool.
+     */
     protected ThreadPoolExecutor threadPool;
+    /**
+     * The Factory.
+     */
     protected ThreadPoolFactory factory;
     
+    /**
+     * Instantiates a new Thread pool port scanner.
+     *
+     * @param factory the factory
+     */
     public ThreadPoolPortScanner(ThreadPoolFactory factory) {
         this.factory = factory;
         
         renewThreadPool();
     }
     
+    /**
+     * Renew thread pool.
+     */
     public synchronized void renewThreadPool() {
         this.threadPool = (ThreadPoolExecutor) this.factory.provide();
     }
@@ -74,5 +91,10 @@ public abstract class ThreadPoolPortScanner implements ThreadPoolScanner, PortSc
     @Override
     public abstract boolean scan(int port);
     
+    /**
+     * Gets thread pool.
+     *
+     * @return the thread pool
+     */
     public ThreadPoolExecutor getThreadPool() {return threadPool;}
 }

@@ -9,12 +9,26 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+/**
+ * The type Udp scanner.
+ */
 public class UDPScanner extends AbstractPortScanner {
-
+    
+    /**
+     * Instantiates a new Udp scanner.
+     *
+     * @param address the address
+     */
     public UDPScanner(String address) {
         this(address, new ThreadPoolDefaultFactory());
     }
-
+    
+    /**
+     * Instantiates a new Udp scanner.
+     *
+     * @param address the address
+     * @param factory the factory
+     */
     public UDPScanner(String address, ThreadPoolFactory factory) {
         super(address, factory);
     }

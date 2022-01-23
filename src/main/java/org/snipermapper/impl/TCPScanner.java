@@ -11,12 +11,26 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+/**
+ * The type Tcp scanner.
+ */
 public class TCPScanner extends AbstractPortScanner {
-
+    
+    /**
+     * Instantiates a new Tcp scanner.
+     *
+     * @param address the address
+     */
     public TCPScanner(String address) {
         this(address, new ThreadPoolDefaultFactory());
     }
-
+    
+    /**
+     * Instantiates a new Tcp scanner.
+     *
+     * @param address the address
+     * @param factory the factory
+     */
     public TCPScanner(String address, ThreadPoolFactory factory) {
         super(address, factory);
     }
