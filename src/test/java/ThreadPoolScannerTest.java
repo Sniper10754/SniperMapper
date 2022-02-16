@@ -1,24 +1,33 @@
+import me.sniper10754.simplelogger4j.Logger;
+import me.sniper10754.simplelogger4j.LoggerFactory;
 import org.junit.jupiter.api.Test;
-import org.snipermapper.AbstractPortScanner;
+import org.snipermapper.PortScanner;
+import org.snipermapper.ThreadPoolScanner;
 import org.snipermapper.impl.TCPScanner;
 import org.snipermapper.impl.UDPScanner;
 
-import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class ThreadPoolScannerTest {
-    public final String target = "localhost";
+    public final String target = "scanme.nmap.org";
+    private int finish = PortScanner.PORT_MAX_VALUE;
+    private Logger logger = LoggerFactory.getLogger(getClass());
     
     @Test
     public void tcpScan() {
-        AbstractPortScanner scanner = new TCPScanner(target);
-    
-        System.out.println(Arrays.toString(scanner.scanPorts(0, 80)));
+        ThreadPoolScanner poolScanner = new TCPScanner(target);
+        PortScanner portScanner = (PortScanner) poolScanner;
+        
+        IntStream.of(poolScanner.scanPorts(0, finish))
+                .forEach(i -> logger.info("Port Open: " + i));
     }
     
     @Test
     public void udpScan() {
-        AbstractPortScanner scanner = new UDPScanner(target);
-    
-        System.out.println(Arrays.toString(scanner.scanPorts(0, 80)));
+        ThreadPoolScanner poolScanner = new UDPScanner(target);
+        PortScanner portScanner = (PortScanner) poolScanner;
+        
+        IntStream.of(poolScanner.scanPorts(0, finish))
+                .forEach(i -> logger.info("Port Open: " + i));
     }
 }
