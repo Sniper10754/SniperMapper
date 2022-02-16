@@ -15,9 +15,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
 
-    compileOnly("com.github.Sniper10754:SimpleLogger4j:v0.2")
+    implementation("com.github.Sniper10754:SimpleLogger4j:0.9-nightly")
 }
 tasks.test {
     useJUnitPlatform()
