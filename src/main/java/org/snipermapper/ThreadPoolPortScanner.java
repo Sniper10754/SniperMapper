@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -16,7 +17,7 @@ public abstract class ThreadPoolPortScanner implements ThreadPoolScanner, PortSc
     /**
      * The Thread pool.
      */
-    protected ThreadPoolExecutor threadPool;
+    protected ExecutorService threadPool;
     /**
      * The Factory.
      */
@@ -37,7 +38,7 @@ public abstract class ThreadPoolPortScanner implements ThreadPoolScanner, PortSc
      * Renew thread pool.
      */
     public synchronized void renewThreadPool() {
-        this.threadPool = (ThreadPoolExecutor) this.factory.provide();
+        this.threadPool = this.factory.provide();
     }
     
     @Override
@@ -96,5 +97,5 @@ public abstract class ThreadPoolPortScanner implements ThreadPoolScanner, PortSc
      *
      * @return the thread pool
      */
-    public ThreadPoolExecutor getThreadPool() {return threadPool;}
+    public ExecutorService getThreadPool() {return threadPool;}
 }

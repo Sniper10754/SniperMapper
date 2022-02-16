@@ -11,6 +11,6 @@ public class ThreadPoolDefaultFactory
 
     @Override
     public ExecutorService provide() {
-        return Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        return Executors.newWorkStealingPool(Runtime.getRuntime().availableProcessors() * 2);
     }
 }
