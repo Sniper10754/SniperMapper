@@ -1,11 +1,8 @@
 package org.snipermapper.impl;
 
-import me.sniper10754.simplelogger4j.Logger;
-import me.sniper10754.simplelogger4j.impl.logger.EventLogger;
-import me.sniper10754.simplelogger4j.impl.logger.SimpleLogger;
 import org.snipermapper.AbstractPortScanner;
-import org.snipermapper.concurrent.ThreadPoolFactory;
 import org.snipermapper.concurrent.ThreadPoolDefaultFactory;
+import org.snipermapper.concurrent.ThreadPoolFactory;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -39,17 +36,16 @@ public class TCPScanner extends AbstractPortScanner {
     public boolean scan(int port, int delay) {
         try {
             Socket s = new Socket();
-
+    
             s.connect(new InetSocketAddress(address, port), delay);
             s.close();
-
+    
+            logger.fine("Port " + port + " Open");
             return true;
         } catch (IOException e) {
+            logger.fine("Port " + port + " Closed");
+            
             return false;
         }
-        
-
     }
-
-
 }

@@ -46,9 +46,12 @@ public class UDPScanner extends AbstractPortScanner {
 
             dp = new DatagramPacket(bytes, bytes.length);
             ds.receive(dp);
-
+            
+            logger.fine("Port " + port + " Open");
             ds.close();
         } catch (IOException e) {
+            logger.fine("Port " + port + " Closed");
+            
             return false;
         }
 
